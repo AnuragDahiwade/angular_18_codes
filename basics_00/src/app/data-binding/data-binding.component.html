@@ -1,0 +1,75 @@
+<!-- <p>data-binding works!</p> -->
+
+<div class="allContent">
+
+<div class="row">
+    <div class="col-4">one way from .ts to .html</div>
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+  </div>
+
+  <div class="row" id="content-space">
+    <div class="col-3">
+        Interpolation
+        <div class="row">
+          <div class="col-4 bg-success">
+            <h4>{{courseName}}</h4>
+            <div>{{inputType}}</div>
+            <input type="text" value="{{courseName}}" placeholder="Enter text">
+            <input type="{{inputType}}" value="{{courseName}}" name="input">
+            <label for="input">The input</label>
+
+          </div>
+
+          <div class="col-4">
+            Property Binding
+
+            <!-- This is property property Binding, here we dont need to wrap the class value in the curly brases we cant directly pass the value by putting the class in the [] braces and prpoviding the value in "" quotes -->
+            <div [class]="myClassName">This the text from the property Binding</div>
+
+            <input type="text" [value]="courseName">
+          </div>
+        </div>
+    </div>
+    <div class="col-2">
+        
+        <ul style="list-style-type: none;">
+            <li>
+                <button type="button" class="btn btn-success" (click)="showAlert('Welcome to Angular 18 ${{courseName}}')">show Welcome</button>
+            </li>
+            <li>
+                <button type="button" class="btn btn-warning" (click)="changeCourseName()">Toggle The course</button>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="col-3">
+
+        <input type="text" [(ngModel)]="courseName">
+        <div>
+            <h1>
+                {{courseName}}
+            </h1>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <div>
+            <input name="checkme" type="checkbox" [(ngModel)]="isActive">
+            <label for="checkme">Tick this box</label>
+            <select name="" id="" [(ngModel)] = "stateName">
+                <option value="">Select</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Gujrat">Gujrat</option>
+                <option value="Keral">Keral</option>
+            </select>
+        </div>
+    </div>
+    <br style="color: black; margin-top: 1rem;">
+    <button type="button" class="btn btn-success" (click)="changeSignameState()">change signal name state</button>
+    <div class="col-3">
+        <h2>{{myName()}}</h2>
+    </div>
+  </div>
+</div>
