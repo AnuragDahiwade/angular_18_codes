@@ -1,0 +1,89 @@
+<!-- <p>attribute-directive works!</p> -->
+
+
+<div class="container-fluid">
+    <div class="header">
+        <h1>Attribute-Directive </h1>
+        <p>[ngClass], [ngStyle]</p>
+        <h2><button class="btn btn-primary" [routerLink]="['/structural-directive']">go to structural-directive</button></h2>
+    </div>
+    <div class="p-1 m-1"></div>
+    <table class="table table-stripped table-hower">
+        <thead>
+            <tr>
+                <th class="align-center div1 p-3 text-center  bg-primary"  [ngClass]="div1BgColor">Div-1</th>
+                <th class="align-center div1 p-3 text-center" [ngClass]="isDiv2Active == true ? 'bg-success' : 'bg-warning text-success'">Div-2</th>
+                <th class="align-center div1 p-3 text-center  bg-info" [ngClass]="num1==num2 ? 'bg-info' : 'bg-warning text-danger'">Div-3</th>
+                <th class="align-center div1 p-3 text-center" [ngClass]="isChecked ? 'bg-warning': ''">Div-4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="container-fluid col-3 text-center">
+                    <button class="btn btn-primary col-4" (click)="addBlueClass()">Add Blue</button>
+                    <button class="btn btn-danger m-1 col-4" (click)="addRedClass()">Add Red</button>
+                </td>
+                <td class="container-fluid col-3 text-center">
+                    <button class="btn btn-secondary col-4" (click)="toggleDiv2Class()">Toggle</button>
+                    <!-- <button class="btn btn-danger m-1 col-4">Add Red</button> -->
+                </td>
+                <td class="container-fluid col-3 text-center">
+                    <input [(ngModel)]="num1" type="text" name="" id="" class="col-6" placeholder="num-1">
+                    <input [(ngModel)]="num2" type="text" name="" id="" class="col-6" placeholder="num-2">
+                </td>
+                <td class="container-fluid col-3">
+                    <input [(ngModel)]="isChecked" type="checkbox" name="isActive" id="" class="" value="false">
+                    <label for="isActive" class="col-3">isActive</label>
+                    <select name="selectedState" id="" class="col-8">
+                        <option value="Maharashtra" class="col-8">Maharashtra</option>
+                        <option value="Punjab" class="col-8">Punjab</option>
+                        <option value="Gujrat" class="col-8">Gujrat</option>
+                        <option value="Delhi" class="col-8">Delhi</option>
+                    </select>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row pt-5">
+        <div class="col-6">
+            <table class="table table-bordered table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Status</th>
+                        <th>Gender</th>
+                        <th>Total Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stud of studentList">
+                        <td>{{ stud.stdId }}</td>
+                        <td>{{ stud.stdName }}</td>
+                        <td>{{ stud.city }}</td>
+                        <td [ngStyle]="{'background-color': stud.isActive ? '#3ca3a1': '#565656'}">
+                            {{ stud.isActive ? "Active" : "De-Actice" }}
+                        </td>
+                        <td>{{ stud.gender }}</td>
+                        <!-- <td></td> -->
+                        <td>
+                            <div class="progress" role="progressbar" aria-label="Example with label" [attr.aria-valuenow]="stud.totalmarks" aria-valuemin="0" aria-valuemax="100">
+                              <div class="progress-bar" [style.width]="stud.totalmarks + '%'" >{{stud.totalmarks}}</div>
+                            </div>
+                          </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-5" [ngStyle]="customStyle">
+            Div test Circle is here
+        </div>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,210 @@
+
+<div class="container-fluid">
+    <div class="p-2 m-2"></div>
+
+    <div class="header container">
+        <div class="headername">
+            <h1>Control-Flow</h1>
+        </div>
+        <div class="smallheadername">
+            <h3>if, if-else, For, Switch</h3>
+        </div>
+    </div>
+    <div class="p-2 m-2"></div>
+
+    <div class="second-container container-fluid p-4" style="background-color: rgb(221, 221, 221); border-radius: 1rem;">
+        <div class="content-container">
+            <div class="row">
+                <div class="div1 col-3 text-center">
+                    @if(isDiv1Visible) {
+                        <div class="hide-show bg-info w-100">
+                            <h1>Div-1</h1>
+                        </div>
+                    }
+                </div>
+                <div class="div2 col-3 text-center ">
+                    @if (isDiv2Toggled) {
+                        <div class="hide-show bg-warning w-100">
+                            <h1>Div-2</h1>
+                        </div>
+                    } @else {
+                        <div class="hide-show bg-white w-100">
+                            <h1>Div-2</h1>
+                        </div>
+                    }
+                </div>
+                <div class="div3 col-3 text-center ">
+                    @if (numValue1 == numValue2) {
+                        <div class="hide-show bg-secondary w-100">
+                            <h1>Div-3</h1>
+                        </div>
+                    }
+                </div>
+                <div class="div4 col-3 text-center">
+                    @if (seletedStatus == "Active") {
+                        <div class="hide-show  bg-success w-100">
+                            <h1>Student is Active</h1>
+                        </div>
+                    } @else if (seletedStatus == "DeActive") {
+                        <div class="hide-show  bg-success w-100">
+                            <h1>Student is De-Active</h1>
+                        </div>
+                    } @else if (seletedStatus == "Pending") {
+                        <div class="hide-show  bg-success w-100">
+                            <h1>Student status is pending</h1>
+                        </div>
+                    } @else {
+                        <div class="hide-show  bg-success w-100">
+                            <h1>Select status</h1>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="row bg-white p-3">
+                <div class="div1 col-3 text-center">
+                    <div class="row container-fluid">
+                        <div class="buttonShow col-6 ">
+                            <button class="btn btn-success" (click)="showDiv1()">Show</button></div>
+                        <div class="buttonShow col-6">
+                            <button class="btn btn-warning" (click)="hideDiv1()">Hide</button></div>
+                    </div>
+                </div>
+                <div class="div2 col-3 text-center">
+                    <div class="row container-fluid text-center">
+                        <div class="buttonShow col">
+                            <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button></div>
+                        
+                    </div>
+                </div>
+                <div class="div3 col-3 text-center">
+                    <div class="container-fluid row text-center">
+                        <div class="showTexts col-6">
+                            <input type="text" [(ngModel)]="numValue1" name="" id="" class="w-100" placeholder="num-1">
+                        </div>
+                        <div class="showTexts col-6">
+                            <input type="text" [(ngModel)]="numValue2" name="" id="" class="w-100" placeholder="num-1">
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="div4 col-3 text-center">
+                    <div class="container-fluid row text-center">
+                        <div class="showTexts col-6">
+                            <input type="checkbox" name="isActive" id="" class="col-3" value="false">
+                            <label for="isActive" class="col-8">isActive</label>
+                        </div>
+                        <div class="showTexts col-6">
+                            <select name="selectedState" [(ngModel)]="seletedStatus" id="" class="col-12">
+                                <option value="" class="col-10">Select</option>
+                                <option value="Active" class="col-10">Active</option>
+                                <option value="deActive" class="col-10">De Active</option>
+                                <option value="Pending" class="col-10">Pending</option>
+                              
+                            </select>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 m-2"></div>
+
+    <div class="container-fluid p-4" style="background-color: rgb(221, 221, 221); border-radius: 1rem;">
+        <div class="row">
+            <div class="col-3 p-2" style="background-color: rgb(233, 233, 233); border-radius: 1rem;">
+                @for (item of cityArray; track $index) {
+                    <div class="w-100">
+                        <li>{{item}}</li>
+                    </div>
+                }
+            </div>
+
+            <div class="col-3 p-2" style="background-color: rgb(233, 233, 233); border-radius: 1rem;">
+                @for (item of cityArray; track $index) {
+                    <div class="w-100">
+                        {{item}}
+                    </div>
+                }
+            </div>
+
+            <select class="col-3 p-2" style="background-color: rgb(233, 233, 233); border-radius: 1rem; max-height: 4rem;">
+                @for (item of cityArray; track $index) {
+                    <option class="w-100"> 
+                        {{item}}
+                    </option>
+                }
+            </select>
+
+            <div class="col-3 p-2" style="background-color: rgb(233, 233, 233); border-radius: 1rem;">
+                <input [(ngModel)]="weekDayNum" type="number" name="" id="">
+                <div class="m-1"></div>
+                @switch (weekDayNum) {
+                    @case (1) {
+                        <h4>Week Day is : Monday</h4>
+                    }
+                    @case (2) {
+                        <h4>Week Day is : Tuesday </h4>
+                    }
+                    @case (3) {
+                        <h4>Week Day is : Wednesday</h4>
+                    }
+                    @case (4) {
+                        <h4>Week Day is : Thursday</h4>
+                    }
+                    @case (5) {
+                        <h4>Week Day is : Friday</h4>
+                    }
+                    @case (6) {
+                        <h4>Week Day is : Saturday</h4>
+                    }
+                    @case (7) {
+                        <h4>Week Day is : Sunday</h4>
+                    }
+                    @default {
+                        <h4>HollyDay</h4>
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-8">
+            <table class="table table-bordered table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Status</th>
+                        <th>Gender</th>
+                        <th>Total Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        @for (item of studentList; track $index) {
+                            <tr>
+                                <td>{{item.stdId}}</td>
+                                <td>{{item.stdName}}</td>
+                                <td>{{item.city}}</td>
+                                <td>{{item.isActive}} </td>
+                                <td>{{item.gender}}</td>
+                                <td>{{item.totalmarks}}</td>
+                            </tr>
+                        }
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>

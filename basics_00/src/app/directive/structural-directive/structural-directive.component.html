@@ -1,0 +1,124 @@
+<!-- <p>structural-directive works!</p> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12" style="background-color: #838383; border-radius: 10px">
+            <h1>Structural Directives</h1>
+            <h3>*ngIf, *ngFor</h3>
+        <!-- <h2><button class="btn btn-primary" [routerLink]="['/attribute-directive']">go to attribute-directive</button></h2> -->
+        <h2><button class="btn btn-primary" (click)="navigateToAttibute()">go to attribute-directive</button></h2>
+        </div>
+        <div class="divider" style="height: 2px; padding: 3px"></div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-3 inner-div">
+                    <div *ngIf="isDiv1Visible" class="div1">
+                        <h2 style="background-color: #e05a00;" class="text-center">Div-1</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button class="btn btn-primary" (click)="showDiv1()">Show</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 inner-div">
+                    <div *ngIf="isDiv2Visible" class="div2">
+                        <h2 style="background-color: #008ee0;" class="text-center">Div-2</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-success" (click)="toggleDiv2Visibility()">toggle</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 inner-div">
+                    <div *ngIf="textBoxVal1 == textBoxVal2" class="div3">
+                        <h2 style="background-color: #e0ca00;" class="text-center">Div-3</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <input [(ngModel)]="textBoxVal1" type="text" name="" id="" placeholder="num-1" style="width: 100%" class="text-center" />
+                        </div>
+                        <div class="col-6">
+                            <input [(ngModel)]="textBoxVal2" type="text" name="" id="" placeholder="num-2" style="width: 100%" class="text-center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 inner-div">
+                    <!-- <div *ngIf="isActive" class="div4">
+                        <h2 style="background-color: #00c6e0;" class="text-center">Div-4</h2>
+                    </div> -->
+                    <div *ngIf="selectedState == 'Mah' || isActive" class="div4">
+                        <h2 style="background-color: #00c6e0;" class="text-center">Div-4</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <input [(ngModel)]="isActive" type="checkbox" name="checkState" id="">
+                            <label for="checkState">_check</label>
+                        </div>
+                        <div class="col-6">
+                            <select [(ngModel)]="selectedState" name="selctState" id="" style="max-width: 100%;">
+                                <option value="">Select</option>
+                                <option value="Mah">Maharashtra</option>
+                                <option value="Guj">Gujrat</option>
+                                <option value="Pun">Panjab</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <ul style="list-style-type: disc;">
+                <li *ngFor="let city of cityArray">{{city}}</li>
+            </ul>
+        </div>
+        <div class="col-3">
+            <li  *ngFor="let cityName of cityArray">{{cityName}}</li>
+        </div> 
+        <div class="col-3">
+            <select name="" id="">
+                <option *ngFor="let city of cityArray" value="{{city}}">{{city}}</option>
+            </select>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr. No</th>
+                        <th>Student Id</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Is Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of studentList; let srNo = index">
+                        <td> {{ srNo + 1 }}</td>
+                        <td> {{ student.stdId }}</td>
+                        <td> {{ student.stdName }}</td>
+                        <td> {{ student.city }}</td>
+                        <td>
+                            <span *ngIf="student.isActive">Active</span>
+                            <span *ngIf="!student.isActive">De-Active</span>
+                            <!-- {{ student.isActive }}</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

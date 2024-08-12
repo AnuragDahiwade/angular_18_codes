@@ -1,0 +1,85 @@
+<!-- <style>
+    .white-color{
+        color: whitesmoke;
+    }
+</style>
+<div class="container-fluid">
+    <div class="p-1 m-1"></div>
+
+    <div class="header container" style="background-color: rgb(170, 170, 170);
+    padding: 2rem;
+    border-radius: 1rem;
+    color: rgb(31, 31, 31);">
+        <div class="headername">
+            <b><h3>Post Api</h3></b>
+        </div>
+        <div class="smallheadername">
+            <b><h4>Create, Read, update , delete</h4></b>
+        </div>
+    </div>
+    <div class="m-2"></div>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="container-fluid p-2 bg-secondary rounded-2">
+                <span class="white-color">Users List</span>
+            </div>
+            <div class="container-fluid row">
+                <div class="col-3">Sr No</div>
+                <div class="col-3">UserName</div>
+                <div class="col-3">Email</div>
+                <div class="col-3">Status</div>
+            </div>
+
+            @for (item of allUsers; track $index) {
+                <div class="container-fluid row">
+                    <div class="col-3 mb-2">{{ item.id }}</div>
+                    <div class="col-3 mb-2">{{ item.name }}</div>
+                    <div class="col-3 mb-2">{{ item.email }}</div>
+                    <div class="col-3 mb-2">
+                        <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                        <button class="btn btn-danger m-l-1" (click)="onDelete(item.id)">Delete</button>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="col-4">
+            <div class="container-fluid p-2 bg-secondary rounded-2">
+                <span class="white-color">New User</span>
+            </div>
+
+            <div class="container-fluid">
+                <form action="" method="post">
+                
+                    <div class="form-group mb-3">
+                        <label for="userName" class="mb-1">Username:</label>
+                        <input type="text" class="form-control" id="userName" name="userName" placeholder="Username" [(ngModel)]="userObj.name" required>
+                    </div>
+            
+                 
+                    <div class="form-group mb-3">
+                        <label for="userEmail" class="mb-1">Email: </label>
+                        <input type="url" class="form-control" id="userEmail" name="userEmail" placeholder="Email" [(ngModel)]="userObj.email" required>
+                    </div>
+            
+                    <div class="form-group mb-3">
+
+                        @if (userObj.id == '0' || (userObj.name == '' && userObj.email == '')) {
+                            {{ userObj.id == getMaxDepartmentId() + 1 }}
+                            <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+                        }@else{
+                            <button type="submit" class="btn btn-primary" (click)="onUpdate(userObj.id)">Update</button>
+                        }
+                        <button type="button" class="btn btn-secondary" style="margin-left: 1rem;">Reset</button>
+                        <button type="button" class="btn btn-secondary" style="margin-left: 1rem;" (click)="getUsers()">getusers</button>
+                    </div>
+                </form>
+            </div>        
+            {{ userObj | json }}    
+                
+        </div>
+
+    </div>
+
+</div> -->

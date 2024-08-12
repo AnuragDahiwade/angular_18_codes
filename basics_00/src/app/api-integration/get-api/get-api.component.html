@@ -1,0 +1,38 @@
+
+<!-- This Page need the fastApi to run so look for the myCustomApis/userApisExamples and run that file then your project will work -->
+ <!-- And Run this project in the 8000 port  -->
+  <!-- Use below command do that -->
+   <!-- > mg --port 8000 s  -->
+
+   
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllUser()">
+            Get Users
+        </button>
+    </div>
+    <div class="col-3">
+        <!-- {{ userList | json }} -->
+          <select name="" id="" class="form-select">
+            @for (item of userList; track $index) {
+                <option value="">{{item.name}}</option>
+            }
+          </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllRecords()">
+            Get Records
+        </button>
+    </div>
+    <div class="col-3">
+        <!-- {{ allRecs | json }} -->
+          <select name="" id="" class="form-select">
+            @for (item of allRecs; track $index) {
+                <option value="">{{item.name}}</option>
+            }
+          </select>
+    </div>
+</div>

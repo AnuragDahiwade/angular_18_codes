@@ -1,0 +1,14 @@
+
+
+.makeItCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    background-color: rgb(170, 170, 170);
+    padding: 2rem;
+    border-radius: 1rem;
+    color: rgb(31, 31, 31);
+}
